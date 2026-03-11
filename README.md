@@ -1,0 +1,2 @@
+# newfast
+FastAPI for beginner
