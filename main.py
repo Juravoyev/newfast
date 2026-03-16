@@ -29,3 +29,5 @@ def news(pk):
 
     return {"result": list(filter(lambda item: pk == item['id'], news_data))[0]}
 
+
+
