@@ -1,33 +1,9 @@
 from fastapi import FastAPI
+from api.v1.exams import api_router
 
 app = FastAPI()
 
-news_data = [
-    {"id" : "1", "title" : "news 1"},
-    {"id" : "2", "title" : "news 2"},
-    {"id" : "3", "title" : "news 3"},
-    {"id" : "4", "title" : "news 4"},
-    {"id" : "5", "title" : "news 5"},
-    {"id" : "6", "title" : "news 6"},
-    {"id" : "7", "title" : "news 7"},
-    {"id" : "8", "title" : "news 8"},
-    {"id" : "9", "title" : "news 9"},
-]
-
-@app.get('/news/')
-def news(limit: int = None, search: str = None):
-
-    if search:
-        data = list(filter(lambda item: search in item['title'], news_data))
-    else:
-        data = news_data
-    
-    return data[:limit]
-
-@app.get('/news/{pk}')
-def news(pk):
-
-    return {"result": list(filter(lambda item: pk == item['id'], news_data))[0]}
+app.include_router(api_router)
 
 
 
